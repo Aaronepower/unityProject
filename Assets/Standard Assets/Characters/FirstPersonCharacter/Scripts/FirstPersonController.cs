@@ -81,6 +81,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+			if (Input.GetMouseButtonDown (0)) {
+				Debug.Log ("Working?");
+				RaycastHit hitInfo = new RaycastHit ();
+				bool hit = Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hitInfo);
+				if (hit) {
+					Debug.Log ("hit?");
+					if (hitInfo.transform.gameObject.tag == "Exit") {
+						Debug.Log ("Why not quiting?");
+						Application.Quit ();
+					}
+				}
+			}
         }
 
 
